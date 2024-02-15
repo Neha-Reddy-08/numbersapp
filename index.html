@@ -10,19 +10,15 @@
             <label id="sum"></label>
         </section>
         <script>
-            function addnum(){
+            async function addnum(){
                 let num1Input=document.getElementById("num1")
                 let num2Input=document.getElementById("num2")
-                let sum=Number(num1Input.value)+Number(num2Input.value);
-                document.getElementById("sum").innerText=sum
+                let n=num1Input.value
+                let m=num2Input.value
 
-                // Make a GET request to the /add endpoint
-            fetch(`https://arithmetic-service-neha-reddy-08.onrender.com/addnum/num1=${num1Input.value}&num2=${num2Input.value}`)
-            .then(response => response.json())
-            .then(data => {
-                alert(`The sum is: ${data.result}`);
-            })
-            .catch(error => console.error('Error:', error));
+                const response= await fetch("http://localhost:3000/addnum/" + n + "/" + m );
+                const sum= await response.json();
+                document.getElementById("sum").innerText=sum;
             }
         </script>
     </body> 
