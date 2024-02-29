@@ -80,7 +80,8 @@
         const textToCipher = document.getElementById("textToCipher");
         let plainText = textToCipher.value;
         const response = await fetch(
-          "http://localhost:8000/cipher" + plainText
+          "https://cipher-service-neha-reddy-08.onrender.com/ciphers" +
+            plainText
         );
         const result = await response.json();
         document.getElementById("cipher").innerText = result;
